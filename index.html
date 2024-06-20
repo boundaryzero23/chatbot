@@ -271,7 +271,7 @@
             height: 100%;
         }
 
-        .visually-hidden {
+        .hidden {
             position: absolute;
             width: 1px;
             height: 1px;
@@ -322,7 +322,7 @@
             /* transform: translate(0); */
         }
 
-        #chatArea .chatWrap {
+        #chatArea .chatConversation {
             position: relative;
             z-index: 1;
             height: 100%;
@@ -462,7 +462,7 @@
         }
 
         .textareaWrap>div {
-            padding: 18px 3px 18px 24px;
+            padding: 18px 4px 18px 24px;
             position: relative;
             z-index: 1;
         }
@@ -495,7 +495,7 @@
             height: 32px;
             background: var(--neutral-color-100) url('./img/ico_arrow.svg') 50% 50% no-repeat;
             position: absolute;
-            right: 16px;
+            right: 24px;
             bottom: 2px;
             text-indent: -9999px;
             border: none;
@@ -512,16 +512,6 @@
             color: #ccc;
             font-size: 13px;
         }
-
-        /* .border-gradient {
-            border: 10px solid;
-            border-image-slice: 1;
-            border-width: 5px;
-        }
-
-        .border-gradient-purple {
-            border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
-        } */
     </style>
 </head>
 
@@ -533,9 +523,9 @@
             </div>
         </header>
         <section id="chatArea">
-            <div class="chatWrap">
+            <div class="chatConversation">
                 <div class="inner">
-                    <h2 class="visually-hidden">채팅 영역</h2>
+                    <h2 class="hidden">채팅 영역</h2>
                     <div id="chatResult">
                         <div class="user-chat">
                             <span class="chat-cont">오늘은 무슨 요일이야?</span>
