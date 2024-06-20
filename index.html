@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>y-SmartChat</title>
+    <style>
+        /*
+        Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+        https://github.com/orioncactus/pretendard
+
+        This Font Software is licensed under the SIL Open Font License, Version 1.1.
+        This license is copied below, and is also available with a FAQ at:
+        http://scripts.sil.org/OFL
+        */
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 900;
+            font-display: swap;
+            src: local('Pretendard Black'), url('./font/pretendard/font/pretendard/woff2/Pretendard-Black.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-Black.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 800;
+            font-display: swap;
+            src: local('Pretendard ExtraBold'), url('./font/pretendard/woff2/Pretendard-ExtraBold.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-ExtraBold.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 700;
+            font-display: swap;
+            src: local('Pretendard Bold'), url('./woff2/Pretendard-Bold.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-Bold.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 600;
+            font-display: swap;
+            src: local('Pretendard SemiBold'), url('./font/pretendard/woff2/Pretendard-SemiBold.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-SemiBold.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 500;
+            font-display: swap;
+            src: local('Pretendard Medium'), url('./font/pretendard/woff2/Pretendard-Medium.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-Medium.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 400;
+            font-display: swap;
+            src: local('Pretendard Regular'), url('./font/pretendard/woff2/Pretendard-Regular.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-Regular.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 300;
+            font-display: swap;
+            src: local('Pretendard Light'), url('./font/pretendard/woff2/Pretendard-Light.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-Light.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 200;
+            font-display: swap;
+            src: local('Pretendard ExtraLight'), url('./font/pretendard/woff2/Pretendard-ExtraLight.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-ExtraLight.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            font-weight: 100;
+            font-display: swap;
+            src: local('Pretendard Thin'), url('./font/pretendard/woff2/Pretendard-Thin.woff2') format('woff2'), url('./font/pretendard/woff/Pretendard-Thin.woff') format('woff');
+        }
+
+        /* http://html5doctor.com/html-5-reset-stylesheet/ */
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* common */
+        :root {
+            --primary-dark-color: #1b1c4d;
+            --point-color: #2515dd;
+
+            --neutral-color-50: #eceff1;
+            --neutral-color-100: #cfd8dc;
+            --neutral-color-400: #78909c;
+            --neutral-color-900: #263238;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+
+
+        /* Chrome, Edge and Safari */
+        *::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+
+        *::-webkit-scrollbar-track {
+            border-radius: 6px;
+            background-color: #FFFFFF;
+        }
+
+        *::-webkit-scrollbar-track:hover {
+            background-color: #FFFFFF;
+        }
+
+        *::-webkit-scrollbar-track:active {
+            background-color: #FFFFFF;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            border-radius: 6px;
+            background-color: #C5CED0;
+        }
+
+        *::-webkit-scrollbar-thumb:hover {
+            background-color: #C5CED0;
+        }
+
+        *::-webkit-scrollbar-thumb:active {
+            background-color: #C5CED0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+
+        body,
+        html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* layout */
+        #smartChat {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #smartChat .inner {
+            max-width: 1700px;
+            margin: 0 auto;
+        }
+
+        #smartChat header {
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 0;
+            background-color: var(--primary-dark-color);
+        }
+
+        #smartChat h1 {
+            width: 177px;
+            height: 28px;
+            background: url('./img/logo.svg') 50% 50% no-repeat;
+            text-indent: -9999px;
+            background-size: 75%;
+        }
+
+        #chatArea {
+            position: relative;
+            flex: 1 1;
+            overflow: hidden;
+            margin-top: 60px;
+            /* transform: translate(0); */
+        }
+
+        #chatArea .chatWrap {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            padding-bottom: 250px;
+            padding-right: 0;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        #chatArea .inner {
+            width: 780px;
+            margin: 0 auto;
+            padding: 24px 0 0;
+        }
+
+        /* #chatArea {
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            padding-bottom: 250px;
+            margin-top: 60px;
+        }
+
+        #chatArea .inner {
+            width: 780px;
+            margin: 0 auto;
+            padding: 24px 0 0;
+        }
+
+        /* #chatResult {
+            padding: 0 8px;
+            max-height: 600px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        } */
+
+        #chatResult>div {
+            margin-bottom: 24px;
+        }
+
+        #chatResult .user-chat {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #chatResult .chat-cont,
+        #chatResult .chat-cont p {
+            line-height: 1.5;
+            font-size: 17px;
+        }
+
+        #chatResult .user-chat .chat-cont {
+            max-width: 80%;
+            background-color: var(--neutral-color-50);
+            color: var(--neutral-color-400);
+            border-radius: 28px;
+            padding: 12px 20px;
+        }
+
+        #chatResult .reply-chat {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            column-gap: 16px;
+            position: relative;
+            padding: 10px 0 0 64px;
+        }
+
+        #chatResult .reply-chat::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--neutral-color-50) url('./img/img_bot_profile.svg') 50% 60% no-repeat;
+            border: 1px solid var(--neutral-color-100);
+            flex-shrink: 0;
+        }
+
+        #chatResult .reply-chat .chat-cont {
+            color: var(--neutral-color-900);
+        }
+
+        #chatForm {
+            width: 90%;
+            position: absolute;
+            left: 50%;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            /* padding: 20px 0 0; */
+            background-color: #fff;
+            transform: translateX(-50%);
+        }
+
+        #chatForm form {
+            position: relative;
+        }
+
+        #chatForm .inner {
+            padding: 0 !important;
+        }
+
+        .textareaWrap {
+            /* width: 100%;
+            overflow: hidden; */
+            position: relative;
+            border-radius: 30px;
+            box-sizing: border-box;
+            background-color: var(--bg-ff);
+
+
+        }
+
+        .textareaWrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            border-radius: inherit;
+            box-sizing: border-box;
+            border: 1px solid var(--neutral-color-100);
+        }
+
+        .textareaWrap.focused::before {
+            border: 2px solid transparent;
+            border-radius: 32px;
+            background-image: linear-gradient(#fff, #fff),
+                linear-gradient(to right, #55aff1 0%, #2515dd 100%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .textareaWrap>div {
+            padding: 18px 3px 18px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #chatTextarea {
+            width: 100%;
+            outline: none;
+            border: none;
+            max-height: 216px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding-right: 70px;
+            font-size: 16px;
+            resize: none;
+            line-height: 1.8;
+            font-family: inherit;
+            border-radius: 0 32px 32px 0;
+        }
+
+        #chatTextarea::placeholder {
+            color: #999;
+        }
+
+        #chatTextarea:focus {
+            color: #333;
+        }
+
+        #chatForm .submit {
+            width: 32px;
+            height: 32px;
+            background: var(--neutral-color-100) url('./img/ico_arrow.svg') 50% 50% no-repeat;
+            position: absolute;
+            right: 16px;
+            bottom: 2px;
+            text-indent: -9999px;
+            border: none;
+            border-radius: 50%;
+        }
+
+        #chatTextarea.has-text~.submit {
+            background-color: var(--point-color);
+        }
+
+        .textareaWrap+p {
+            padding: 16px 0 24px;
+            text-align: center;
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        /* .border-gradient {
+            border: 10px solid;
+            border-image-slice: 1;
+            border-width: 5px;
+        }
+
+        .border-gradient-purple {
+            border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="smartChat">
+        <header>
+            <div class="inner">
+                <h1>y-SmartChat</h1>
+            </div>
+        </header>
+        <section id="chatArea">
+            <div class="chatWrap">
+                <div class="inner">
+                    <h2 class="visually-hidden">채팅 영역</h2>
+                    <div id="chatResult">
+                        <div class="user-chat">
+                            <span class="chat-cont">오늘은 무슨 요일이야?</span>
+                        </div>
+                        <div class="reply-chat">
+                            <div class="chat-cont">
+                                <p>오늘은 수요일이야.</p>
+                            </div>
+                        </div>
+                        <div class="user-chat">
+                            <span class="chat-cont">수요일의 유래를 알려줘😊</span>
+                        </div>
+                        <div class="reply-chat">
+                            <div class="chat-cont">
+                                <p>수요일의 유래는 여러 문화와 전통에서 찾아볼 수 있어. 많은 유럽어권에서 수요일은 ‘오딘의 날’ 또는 '메르쿠리우스의 날’을 어원으로 하고 있는데, 오딘과 메르쿠리우스 모두 수성을 상징하는 신이므로, 한국과 일본에서는 '수요일’로 불리지.</p>
+                            </div>
+                            <span></span>
+                        </div>
+                        <div class="user-chat">
+                            <span class="chat-cont">고마워, 다른 요일의 유래도 알려줘!</span>
+                        </div>
+                        <div class="reply-chat">
+                            <div class="chat-cont">
+                                <p>요일의 이름은 다양한 문화와 전통에서 유래했어. 많은 언어권에서 사용하는 요일 이름은 고대 로마에서 기원한 것으로 알려져 있지. 로마 제국 시기에는 8일 주기였던 달력을 7일 주기로 고치면서, 각 날짜마다 천체의 이름을 따서 태양, 달, 아레스, 헤르메스, 제우스, 아프로디테, 그리고 크로노스로 이름을 붙였어...</p>
+                            </div>
+                        </div>
+                        <div class="user-chat">
+                            <span class="chat-cont">고마워, 다른 요일의 유래도 알려줘! 고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!</span>
+                        </div>
+                        <div class="reply-chat">
+                            <div class="chat-cont">
+                                <p>요일의 이름은 다양한 문화와 전통에서 유래했어. 많은 언어권에서 사용하는 요일 이름은 고대 로마에서 기원한 것으로 알려져 있지. 로마 제국 시기에는 8일 주기였던 달력을 7일 주기로 고치면서, 각 날짜마다 천체의 이름을 따서 태양, 달, 아레스, 헤르메스, 제우스, 아프로디테, 그리고 크로노스로 이름을 붙였어...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chatForm">
+                <div class="inner">
+                    <div class="textareaWrap">
+                        <div>
+                            <form action="">
+                                <textarea name="" id="chatTextarea" rows="1"></textarea>
+                                <!-- <textrea id="chatTextarea" rows="1" placeholder="무엇이든 물어보세요" class="border-gradient border-gradient-purple"></textarea> -->
+                                <button type="button" class="submit">전송하기</button>
+                            </form>
+                        </div>
+                    </div>
+                    <p>y-SmartChat은 실수를 할 수 있습니다. 중요한 정보를 확인하세요</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function handleTextareaInput() {
+            const textarea = document.getElementById('chatTextarea');
+            textarea.style.height = 'auto'; // 초기 높이를 auto로 설정
+            textarea.style.height = textarea.scrollHeight + 'px'; // 내용에 맞게 높이 조정
+
+            if (textarea.value) {
+                textarea.classList.add('has-text'); // 내용이 있을 때 클래스 추가
+            } else {
+                textarea.classList.remove('has-text'); // 내용이 없을 때 클래스 제거
+            }
+        }
+
+        document.getElementById('chatTextarea').addEventListener('input', handleTextareaInput);
+
+        const chatTextarea = document.getElementById('chatTextarea');
+        const textareaWrap = document.querySelector('.textareaWrap');
+
+        chatTextarea.addEventListener('focus', function () {
+            textareaWrap.classList.add('focused');
+        });
+
+        chatTextarea.addEventListener('blur', function () {
+            textareaWrap.classList.remove('focused');
+        });
+    </script>
+</body>
+
+</html>
