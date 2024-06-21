@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,87 +80,19 @@
         }
 
         /* http://html5doctor.com/html-5-reset-stylesheet/ */
-        html,
-        body,
-        div,
-        span,
-        applet,
-        object,
-        iframe,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        blockquote,
-        pre,
-        a,
-        abbr,
-        acronym,
-        address,
-        big,
-        cite,
-        code,
-        del,
-        dfn,
-        em,
-        img,
-        ins,
-        kbd,
-        q,
-        s,
-        samp,
-        small,
-        strike,
-        strong,
-        sub,
-        sup,
-        tt,
-        var,
-        b,
-        u,
-        i,
-        center,
-        dl,
-        dt,
-        dd,
-        ol,
-        ul,
-        li,
-        fieldset,
-        form,
-        label,
-        legend,
-        table,
-        caption,
-        tbody,
-        tfoot,
-        thead,
-        tr,
-        th,
-        td,
-        article,
-        aside,
-        canvas,
-        details,
-        embed,
-        figure,
-        figcaption,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        output,
-        ruby,
-        section,
-        summary,
-        time,
-        mark,
-        audio,
-        video {
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
             margin: 0;
             padding: 0;
             border: 0;
@@ -167,44 +100,25 @@
             font: inherit;
             vertical-align: baseline;
         }
-
         /* HTML5 display-role reset for older browsers */
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        section {
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
             display: block;
         }
-
         body {
             line-height: 1;
         }
-
-        ol,
-        ul {
+        ol, ul {
             list-style: none;
         }
-
-        blockquote,
-        q {
+        blockquote, q {
             quotes: none;
         }
-
-        blockquote:before,
-        blockquote:after,
-        q:before,
-        q:after {
+        blockquote:before, blockquote:after,
+        q:before, q:after {
             content: '';
             content: none;
         }
-
         table {
             border-collapse: collapse;
             border-spacing: 0;
@@ -221,13 +135,9 @@
             --neutral-color-900: #263238;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * {box-sizing: border-box;}
 
         /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
-
-
         /* Chrome, Edge and Safari */
         *::-webkit-scrollbar {
             height: 8px;
@@ -387,6 +297,43 @@
             color: var(--neutral-color-900);
         }
 
+        #chatResult .reaction-btn-list {
+            padding-left: 58px;
+        }
+
+        #chatResult .reaction-btn-list button {
+            width: 26px; 
+            height: 26px;
+            border: none;
+            background-color: #fff;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            text-indent: -9999px;
+            /* transition: .3s; */
+            cursor: pointer;
+        }
+
+        #chatResult .reaction-btn-list button:hover {
+            background-color: #f6f6f6;
+            border-radius: 50%;
+        }
+
+        #chatResult .reaction-btn-list button.copy {
+            background-image: url('./img/ico_copy.svg');
+        }
+
+        #chatResult .reaction-btn-list button.refresh {
+            background-image: url('./img/ico_refresh.svg');
+        }
+
+        #chatResult .reaction-btn-list button.good {
+            background-image: url('./img/ico_good.svg');
+        }
+
+        #chatResult .reaction-btn-list button.bad {
+            background-image: url('./img/ico_bad.svg');
+        }
+
         #chatForm {
             width: 90%;
             position: absolute;
@@ -454,6 +401,7 @@
             overflow-x: hidden;
             overflow-y: auto;
             padding-right: 70px;
+            padding-left: 48px;
             font-size: 16px;
             resize: none;
             line-height: 1.8;
@@ -469,15 +417,27 @@
             color: #333;
         }
 
+        #chatForm button {
+            position: absolute; 
+            text-indent: -9999px; 
+            border: none; 
+            cursor: pointer;
+        }
+
+        #chatForm .file {
+            width: 32px;
+            height: 32px;
+            background: url('./img/ico_file.svg') 50% 50% no-repeat;
+            left: 0;
+            bottom: 4px;
+        }
+
         #chatForm .submit {
             width: 32px;
             height: 32px;
             background: var(--neutral-color-100) url('./img/ico_arrow.svg') 50% 50% no-repeat;
-            position: absolute;
             right: 20px;
             bottom: 2px;
-            text-indent: -9999px;
-            border: none;
             border-radius: 50%;
         }
 
@@ -514,6 +474,13 @@
                                 <p>오늘은 수요일이야.</p>
                             </div>
                         </div>
+                        <div class="reaction-btn-list">
+                            <button type="button" class="copy">복사하기</button>
+                            <button type="button" class="refresh">새로고침</button>
+                            <button type="button" class="good">추천</button>
+                            <button type="button" class="bad">비추천</button>
+                        </div>
+
                         <div class="user-chat">
                             <span class="chat-cont">수요일의 유래를 알려줘😊</span>
                         </div>
@@ -521,8 +488,14 @@
                             <div class="chat-cont">
                                 <p>수요일의 유래는 여러 문화와 전통에서 찾아볼 수 있어. 많은 유럽어권에서 수요일은 ‘오딘의 날’ 또는 '메르쿠리우스의 날’을 어원으로 하고 있는데, 오딘과 메르쿠리우스 모두 수성을 상징하는 신이므로, 한국과 일본에서는 '수요일’로 불리지.</p>
                             </div>
-                            <span></span>
                         </div>
+                        <div class="reaction-btn-list">
+                            <button type="button" class="copy">복사하기</button>
+                            <button type="button" class="refresh">새로고침</button>
+                            <button type="button" class="good">추천</button>
+                            <button type="button" class="bad">비추천</button>
+                        </div>
+
                         <div class="user-chat">
                             <span class="chat-cont">고마워, 다른 요일의 유래도 알려줘!</span>
                         </div>
@@ -531,6 +504,13 @@
                                 <p>요일의 이름은 다양한 문화와 전통에서 유래했어. 많은 언어권에서 사용하는 요일 이름은 고대 로마에서 기원한 것으로 알려져 있지. 로마 제국 시기에는 8일 주기였던 달력을 7일 주기로 고치면서, 각 날짜마다 천체의 이름을 따서 태양, 달, 아레스, 헤르메스, 제우스, 아프로디테, 그리고 크로노스로 이름을 붙였어...</p>
                             </div>
                         </div>
+                        <div class="reaction-btn-list">
+                            <button type="button" class="copy">복사하기</button>
+                            <button type="button" class="refresh">새로고침</button>
+                            <button type="button" class="good">추천</button>
+                            <button type="button" class="bad">비추천</button>
+                        </div>
+
                         <div class="user-chat">
                             <span class="chat-cont">고마워, 다른 요일의 유래도 알려줘! 고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!고마워, 다른 요일의 유래도 알려줘!</span>
                         </div>
@@ -538,6 +518,12 @@
                             <div class="chat-cont">
                                 <p>요일의 이름은 다양한 문화와 전통에서 유래했어. 많은 언어권에서 사용하는 요일 이름은 고대 로마에서 기원한 것으로 알려져 있지. 로마 제국 시기에는 8일 주기였던 달력을 7일 주기로 고치면서, 각 날짜마다 천체의 이름을 따서 태양, 달, 아레스, 헤르메스, 제우스, 아프로디테, 그리고 크로노스로 이름을 붙였어...</p>
                             </div>
+                        </div>
+                        <div class="reaction-btn-list">
+                            <button type="button" class="copy">복사하기</button>
+                            <button type="button" class="refresh">새로고침</button>
+                            <button type="button" class="good">추천</button>
+                            <button type="button" class="bad">비추천</button>
                         </div>
                     </div>
                 </div>
@@ -548,6 +534,7 @@
                     <div class="textareaWrap">
                         <div>
                             <form action="">
+                                <button type="button" class="file">파일 첨부</button>
                                 <textarea name="" id="chatTextarea" rows="1" placeholder="무엇이든 물어보세요"></textarea>
                                 <button type="button" class="submit">전송하기</button>
                             </form>
@@ -560,6 +547,7 @@
     </div>
 
     <script>
+        // textarea 텍스트 입력 시
         function handleTextareaInput() {
             const textarea = document.getElementById('chatTextarea');
             textarea.style.height = 'auto'; // 초기 높이를 auto로 설정
